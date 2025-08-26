@@ -73,3 +73,26 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+---
+
+# Notas de integração com o backend
+
+- Endpoints esperados (sugestão):
+- GET /equipamentos → Equipment[]
+- POST /equipamentos {nome, codigo?, descricao?, status}
+- PUT /equipamentos/:id {patch}
+- GET /reservas → Reserva[]
+- POST /reservas {equipamentoId, responsavel, inicio, fim, observacoes?}
+- POST /reservas/:id/concluir
+- O frontend usa ofetch; configure CORS no backend.
+- Datas ISO (UTC) para evitar ambiguidade; formatamos no front com dayjs.
+
+---
+
+# Ideias futuras (rápidas)
+
+- Calendário mensal de reservas (ex.: vue-cal ou fullcalendar) — pode ser adicionado depois.
+- Regras de conflito: bloquear reserva se intervalo se sobrepõe a outra do mesmo equipamento.
+- Papel de usuário (admin x comum) e autenticação.
+- Exportar relatório (CSV/PDF) das reservas.
